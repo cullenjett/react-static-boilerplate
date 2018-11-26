@@ -1,7 +1,20 @@
-function render(locals) {
-  return `<html><body><h1>${locals.greet} from ${
-    locals.path
-  }</h1><p>${JSON.stringify(locals.assets)}</p></body></html>`;
+import React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+
+import { App } from './App';
+
+function render(data) {
+  const markup = renderToStaticMarkup(<App data={data} />);
+
+  return `
+    <html>
+      <head>
+        <title>React Static Site Generator Boilerplate</title>
+      </head>
+      <body>
+        <div id="root">${markup}</div>
+      </body>
+    </html>`;
 }
 
-module.exports = render;
+export default render;
