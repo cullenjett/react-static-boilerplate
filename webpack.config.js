@@ -1,33 +1,26 @@
+const ManifestPlugin = require('webpack-manifest-plugin');
 const path = require('path');
-
-const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
 
 const config = {
   mode: 'production',
-  entry: './src/index.js',
+  entry: {
+    main: './src/index.js'
+  },
   output: {
-    filename: 'index.js',
-    path: path.resolve(__dirname, './dist'),
-    libraryTarget: 'umd'
+    filename: '[name].[chunkhash:8].js',
+    chunkFilename: '[name].[chunkhash:8].chunk.js',
+    path: path.resolve(__dirname, './dist')
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.js$/,
         include: path.resolve(__dirname, './src'),
         loader: 'babel-loader'
       }
     ]
   },
-  plugins: [
-    new StaticSiteGeneratorPlugin({
-      paths: ['/hello', '/world'],
-      globals: {
-        window: {},
-        document: {}
-      }
-    })
-  ]
+  plugins: [new ManifestPlugin()]
 };
 
 module.exports = config;

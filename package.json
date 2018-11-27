@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "serve": "http-server dist/"
+    "build": "rm -rf dist && webpack && webpack --config webpack.renderHtml.config.js",
+    "serve": "serve dist/"
   },
   "keywords": [],
   "author": "",
@@ -19,11 +19,12 @@
     "babel-loader": "^8.0.4",
     "static-site-generator-webpack-plugin": "^3.4.2",
     "webpack": "^4.26.1",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "webpack-manifest-plugin": "^2.0.4"
   },
   "dependencies": {
-    "http-server": "^0.11.1",
     "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.6.3",
+    "serve": "^10.1.1"
   }
 }
