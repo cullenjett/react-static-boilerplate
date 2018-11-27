@@ -14,6 +14,7 @@ function renderHtml(data) {
   );
 
   return `
+    <!doctype html>
     <html lang="en">
       <head>
         <meta charset="UTF-8" />

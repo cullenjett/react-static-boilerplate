@@ -1,41 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, Router } from '@reach/router';
+
+import { TodoList } from './TodoList';
 
 export const App = () => {
   console.log('hello from <App />');
 
   return (
-    <div>
-      <h1>App</h1>
+    <main>
+      <header style={{ marginBottom: '20px' }}>
+        <h1>Static Site Generator</h1>
 
-      <nav>
-        <Link to="/">Home</Link> <Link to="hello-world">Hello World</Link>
-      </nav>
+        <nav>
+          <Link to="/">Home</Link> <Link to="hello-world">Hello World</Link>
+        </nav>
+      </header>
 
       <Router>
-        <InputMirror path="/" default />
-        <Page path="hello-world" />
+        <TodoList path="/" default />
+        <HelloPage path="hello-world" />
       </Router>
-    </div>
+    </main>
   );
 };
 
-function InputMirror() {
-  const [inputValue, setInputValue] = useState('');
-
+function HelloPage({ uri }) {
   return (
-    <div>
-      <h2>Input mirror</h2>
-      <input
-        type="text"
-        value={inputValue}
-        onChange={e => setInputValue(e.target.value)}
-      />
-      <p>{inputValue}</p>
-    </div>
+    <p>
+      Hello from <code>{uri}</code>
+    </p>
   );
-}
-
-function Page({ path }) {
-  return <h2>Hello from {path}</h2>;
 }
