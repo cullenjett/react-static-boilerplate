@@ -1,29 +1,31 @@
 const path = require('path');
-
 const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
 
 const config = {
   mode: 'production',
   entry: {
-    renderHtml: './src/renderHtml.js'
+    renderHtml: './build/renderHtml.js'
   },
   output: {
     filename: 'renderHtml.js',
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, '../dist'),
     libraryTarget: 'umd'
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        include: path.resolve(__dirname, './src'),
+        include: [
+          path.resolve(__dirname, '../src'),
+          path.resolve(__dirname, './renderHtml.js')
+        ],
         loader: 'babel-loader'
       }
     ]
   },
   plugins: [
     new StaticSiteGeneratorPlugin({
-      paths: ['/hello', '/world'],
+      crawl: true,
       globals: {
         window: {}
       }
