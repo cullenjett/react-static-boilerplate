@@ -14,26 +14,46 @@ function renderHtml(data) {
   );
 
   return `
-    <html>
+    <html lang="en">
       <head>
-        <title>React Static Site Generator Boilerplate</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="Boilerplate for statically generated sites with React" />
+
+        <title>static-site-generator</title>
+
+        ${preloadLinks(assetManifest)}
+        ${scriptTags(assetManifest)}
+        ${linkTags(assetManifest)}
       </head>
       <body>
         <div id="root">${markup}</div>
-
-        ${scriptTags(assetManifest)}
       </body>
     </html>
   `;
+}
+
+function preloadLinks(assets) {
+  return `<link rel="preload" as="script" href="${assets['main.js']}"/>`;
+}
+
+function linkTags(assets) {
+  return Object.keys(assets)
+    .filter(assetName => assetName.endsWith('.css'))
+    .reduce((links, assetName) => {
+      links += `<link rel="stylesheet" href="${assets[assetName]}" />`;
+      return links;
+    }, '');
 }
 
 function scriptTags(assets) {
   return Object.keys(assets)
     .filter(assetName => assetName.endsWith('.js'))
     .reduce((scripts, assetName) => {
-      scripts += `<script type="text/javascript" src="${
+      scripts += `<script defer type="text/javascript" src="${
         assets[assetName]
-      }" defer></script>`;
+      }"></script>`;
 
       return scripts;
     }, '');
