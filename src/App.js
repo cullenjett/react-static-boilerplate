@@ -9,16 +9,16 @@ export const App = () => {
   return (
     <main>
       <header style={{ marginBottom: '20px' }}>
-        <h1>Static Site Generator</h1>
+        <h1>React Static Site Generator Boilerplate</h1>
 
         <nav>
-          <Link to="/">Home</Link> <Link to="hello-world">Hello World</Link>
+          <Link to="/">Home</Link> <Link to="about">About</Link>
         </nav>
       </header>
 
       <Router>
         <TodoList path="/" default />
-        <HelloPage path="hello-world" />
+        <HelloPage path="about" />
       </Router>
     </main>
   );

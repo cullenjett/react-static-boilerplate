@@ -1,10 +1,10 @@
 {
-  "name": "static-site-generator",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "react-static-boilerplate",
+  "version": "0.0.1",
+  "description": "Boilerplate for statically generated React apps",
+  "private": true,
   "scripts": {
-    "build": "rm -rf dist && webpack && webpack --config build/webpack.renderHtml.config.js",
+    "build": "webpack && webpack --config renderHtml/webpack.renderHtml.config.js",
     "serve": "serve dist/"
   },
   "keywords": [],
@@ -17,6 +17,7 @@
     "@babel/register": "^7.0.0",
     "autoprefixer": "^9.3.1",
     "babel-loader": "^8.0.4",
+    "clean-webpack-plugin": "^1.0.0",
     "css-loader": "^1.0.1",
     "mini-css-extract-plugin": "^0.4.5",
     "postcss-loader": "^3.0.0",

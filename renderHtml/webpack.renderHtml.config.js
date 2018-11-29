@@ -4,7 +4,7 @@ const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin'
 const config = {
   mode: 'production',
   entry: {
-    renderHtml: './build/renderHtml.js'
+    renderHtml: path.resolve(__dirname, './renderHtml.js')
   },
   output: {
     filename: 'renderHtml.js',
@@ -27,7 +27,8 @@ const config = {
     new StaticSiteGeneratorPlugin({
       crawl: true,
       globals: {
-        window: {}
+        window: {},
+        document: {}
       }
     })
   ]

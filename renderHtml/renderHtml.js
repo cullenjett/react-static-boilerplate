@@ -22,7 +22,7 @@ function renderHtml(data) {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="Boilerplate for statically generated sites with React" />
 
-        <title>static-site-generator</title>
+        <title>react-static-boilerplate</title>
 
         ${preloadLinks(assetManifest)}
         ${scriptTags(assetManifest)}

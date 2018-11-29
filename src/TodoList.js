@@ -14,6 +14,7 @@ export const TodoList = () => {
     <Fragment>
       <form onSubmit={handleSubmit}>
         <label htmlFor="todo">Enter a todo</label>
+        <br />
         <input
           type="text"
           id="todo"

@@ -1,4 +1,5 @@
 const autoprefixer = require('autoprefixer');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
@@ -43,6 +44,7 @@ const config = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(['dist']),
     new ManifestPlugin(),
     new MiniCssExtractPlugin({
       filename: 'assets/[name].[contenthash:8].css'
